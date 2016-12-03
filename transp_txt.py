@@ -1,7 +1,15 @@
 import re
+import sys
 
-filename = 'Judas Priest - Breaking The Law.txt'
-transpose = -2
+def usage():
+    print(sys.argv[0] + ' <+-transpose_halfnotes> <filename>')
+
+if len(sys.argv) != 3 or sys.argv[1] in ['-h', 'help', '-help', '--help']:
+    usage()
+    sys.exit(-1)
+
+transpose = int(sys.argv[1])
+filename = str(sys.argv[2])
 
 re_note = re.compile('([:\*]) (\d+) (\d+) (\d+)(.*$)')
 
